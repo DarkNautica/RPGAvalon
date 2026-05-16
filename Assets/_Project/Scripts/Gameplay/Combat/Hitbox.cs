@@ -23,30 +23,6 @@ namespace DarkNautica.Gameplay.Combat
         {
             _active = true;
             _hitThisSwing.Clear();
-
-            var animator = source != null ? source.GetComponentInChildren<Animator>() : null;
-            if (animator != null)
-            {
-                int combatLayer = animator.GetLayerIndex("Combat");
-                if (combatLayer >= 0)
-                    Debug.Log($"[Hitbox] Active during: {GetStateName(animator, combatLayer)}");
-                else
-                    Debug.Log("[Hitbox] Active (no Combat layer)");
-            }
-            else
-            {
-                Debug.Log("[Hitbox] Active (no animator)");
-            }
-        }
-
-        private string GetStateName(Animator anim, int layer)
-        {
-            var info = anim.GetCurrentAnimatorStateInfo(layer);
-            if (info.IsName("LightCombo01_A")) return "A";
-            if (info.IsName("LightCombo01_B")) return "B";
-            if (info.IsName("LightCombo01_C")) return "C";
-            if (info.IsName("Empty")) return "Empty";
-            return $"Unknown(hash:{info.shortNameHash})";
         }
 
         public void Deactivate()
@@ -74,16 +50,24 @@ namespace DarkNautica.Gameplay.Combat
                 var damageable = hit.GetComponent<IDamageable>() ?? hit.GetComponentInParent<IDamageable>();
                 if (damageable != null && !damageable.IsDead)
                 {
+                    Vector3 impactPoint = hit.ClosestPoint(transform.position);
+
                     var info = new DamageInfo
                     {
                         damage = damage,
-                        hitPoint = transform.position,
+                        hitPoint = impactPoint,
                         hitDirection = (hit.transform.position - source.transform.position).normalized,
                         source = source
                     };
                     damageable.TakeDamage(info);
                     _hitThisSwing.Add(hit);
-                    Debug.Log($"[Hitbox] Hit: {hit.name} for {damage} damage");
+
+                    // Juice
+                    HitstopManager.Instance?.Freeze(0.06f);
+                    DamageNumberSpawner.Instance?.Spawn(damage, impactPoint + Vector3.up * 0.5f, hit.transform);
+                    HitImpulse.Instance?.Pulse(0.15f);
+                    HitVFXSpawner.Instance?.Spawn(impactPoint);
+                    HitAudio.Instance?.PlayHit();
                 }
             }
         }

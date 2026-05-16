@@ -4,8 +4,10 @@
     "references": [
         "DarkNautica.Core",
         "DarkNautica.Input",
+        "DarkNautica.UI",
         "Unity.InputSystem",
-        "Unity.Cinemachine"
+        "Unity.Cinemachine",
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
