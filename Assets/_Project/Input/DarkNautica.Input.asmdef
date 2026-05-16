@@ -1,11 +1,8 @@
 {
-    "name": "DarkNautica.Gameplay",
-    "rootNamespace": "DarkNautica.Gameplay",
+    "name": "DarkNautica.Input",
+    "rootNamespace": "DarkNautica.Input",
     "references": [
-        "DarkNautica.Core",
-        "DarkNautica.Input",
-        "Unity.InputSystem",
-        "Unity.Cinemachine"
+        "Unity.InputSystem"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
