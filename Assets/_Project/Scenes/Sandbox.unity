@@ -174,10 +174,28 @@ PrefabInstance:
     - target: {fileID: 95898450327325348, guid: 071b4da7cfff18347a371c677585b749, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: f1fb1b28ca3a2e94bafde60b3e9b9bc8, type: 2}
+      objectReference: {fileID: 22100000, guid: 11f2219967b99da49be35dd76e31b9fb, type: 2}
+    - target: {fileID: 95898450327325348, guid: 071b4da7cfff18347a371c677585b749, type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'Toes_R'\n\tTransform 'Toes_R'\n\tFrom animation
+        clip 'A_Idle_Base_Sword'\n\tFrom animation clip 'A_Idle_Base_Sword'\n\tFrom
+        animation clip 'A_Idle_Base_Sword'\n\tFrom animation clip 'A_Idle_Base_Sword'\n\tFrom
+        animation clip 'A_Idle_Base_Sword'\n\tFrom animation clip 'A_Idle_Base_Sword'\n\tFrom
+        animation clip 'A_Idle_Base_Sword'\n\tFrom animation clip 'A_Idle_Base_Sword'\n\tFrom
+        animation clip 'A_Idle_Base_Sword'\n\tFrom animation clip 'A_Attack_LightCombo01A_Sword'\n\tand
+        more ..."
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4339053015131724, guid: 071b4da7cfff18347a371c677585b749, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 381403545}
+    - targetCorrespondingSourceObject: {fileID: 4555883491348096, guid: 071b4da7cfff18347a371c677585b749, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 683868586}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1290725874115128, guid: 071b4da7cfff18347a371c677585b749, type: 3}
       insertIndex: -1
@@ -185,12 +203,52 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1290725874115128, guid: 071b4da7cfff18347a371c677585b749, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1997332661}
+    - targetCorrespondingSourceObject: {fileID: 1290725874115128, guid: 071b4da7cfff18347a371c677585b749, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1997332663}
+    - targetCorrespondingSourceObject: {fileID: 1290725874115128, guid: 071b4da7cfff18347a371c677585b749, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1997332664}
+    - targetCorrespondingSourceObject: {fileID: 1290725874115128, guid: 071b4da7cfff18347a371c677585b749, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1997332665}
   m_SourcePrefab: {fileID: 100100000, guid: 071b4da7cfff18347a371c677585b749, type: 3}
 --- !u!4 &161502604 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4339053015131724, guid: 071b4da7cfff18347a371c677585b749, type: 3}
   m_PrefabInstance: {fileID: 161502603}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &381403544
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 381403545}
+  m_Layer: 0
+  m_Name: CameraPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &381403545
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381403544}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.78, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 161502604}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &485175892
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,8 +289,8 @@ MonoBehaviour:
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
-    TrackingTarget: {fileID: 161502604}
-    LookAtTarget: {fileID: 161502604}
+    TrackingTarget: {fileID: 381403545}
+    LookAtTarget: {fileID: 381403545}
     CustomLookAtTarget: 1
   Lens:
     FieldOfView: 40
@@ -262,8 +320,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 485175892}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13608079, y: 1.7630505e-16, z: 4.0270596e-16, w: 0.99069774}
-  m_LocalPosition: {x: 0, y: 2.3, z: -5}
+  m_LocalRotation: {x: 0.15512903, y: -0.0000000112456755, z: 0.0000000017659086, w: 0.98789424}
+  m_LocalPosition: {x: 0, y: 3.29, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -362,7 +420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b5d7c088409d9a40b7b09aa707777f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineOrbitalFollow
-  TargetOffset: {x: 0, y: 2, z: 0}
+  TargetOffset: {x: 0, y: 2.21, z: 0}
   TrackerSettings:
     BindingMode: 4
     PositionDamping: {x: 1, y: 1, z: 1}
@@ -413,6 +471,84 @@ MonoBehaviour:
       Wait: 1
       Time: 2
     Restrictions: 0
+--- !u!1001 &683868585
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1657963079}
+    m_Modifications:
+    - target: {fileID: 1588372535281458, guid: a1179b3754a6656469126cba8b02cba5, type: 3}
+      propertyPath: m_Name
+      value: Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881053571261320, guid: a1179b3754a6656469126cba8b02cba5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881053571261320, guid: a1179b3754a6656469126cba8b02cba5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881053571261320, guid: a1179b3754a6656469126cba8b02cba5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881053571261320, guid: a1179b3754a6656469126cba8b02cba5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881053571261320, guid: a1179b3754a6656469126cba8b02cba5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881053571261320, guid: a1179b3754a6656469126cba8b02cba5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881053571261320, guid: a1179b3754a6656469126cba8b02cba5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881053571261320, guid: a1179b3754a6656469126cba8b02cba5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881053571261320, guid: a1179b3754a6656469126cba8b02cba5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881053571261320, guid: a1179b3754a6656469126cba8b02cba5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881053571261320, guid: a1179b3754a6656469126cba8b02cba5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881053571261320, guid: a1179b3754a6656469126cba8b02cba5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881053571261320, guid: a1179b3754a6656469126cba8b02cba5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881053571261320, guid: a1179b3754a6656469126cba8b02cba5, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a1179b3754a6656469126cba8b02cba5, type: 3}
+--- !u!4 &683868586 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4881053571261320, guid: a1179b3754a6656469126cba8b02cba5, type: 3}
+  m_PrefabInstance: {fileID: 683868585}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1269646684
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,7 +633,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 90
+  field of view: 40
   orthographic: 0
   orthographic size: 10
   m_Depth: 0
@@ -523,8 +659,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1269646684}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1360808, y: 2.3607428e-16, z: -3.2426813e-17, w: 0.99069774}
-  m_LocalPosition: {x: 0, y: 2.3, z: -5}
+  m_LocalRotation: {x: 0.15512905, y: -0.0000000112456755, z: 0.0000000017659085, w: 0.98789424}
+  m_LocalPosition: {x: 0, y: 3.29, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -574,6 +710,11 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!4 &1657963079 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4555883491348096, guid: 071b4da7cfff18347a371c677585b749, type: 3}
+  m_PrefabInstance: {fileID: 161502603}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1960141833
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,6 +876,43 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!114 &1997332663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997332659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6638b0fc27aa1ca4892ce102bc6826a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DarkNautica.Gameplay::DarkNautica.Gameplay.PlayerCombat
+--- !u!114 &1997332664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997332659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09faf6562d87af94b9b29a3bb68e26e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DarkNautica.Gameplay::DarkNautica.Gameplay.CursorLocker
+--- !u!114 &1997332665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997332659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ed4216558a3eaf4a82695e9606af830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DarkNautica.Gameplay::DarkNautica.Gameplay.CombatStateLogger
+  _combat: {fileID: 0}
 --- !u!1 &2136107621
 GameObject:
   m_ObjectHideFlags: 0

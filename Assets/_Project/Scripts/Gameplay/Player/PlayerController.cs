@@ -48,6 +48,7 @@ namespace DarkNautica.Gameplay
         private static readonly int AnimInclineAngle = Animator.StringToHash("InclineAngle");
         private static readonly int AnimLocomotionStartDirection = Animator.StringToHash("LocomotionStartDirection");
         private static readonly int AnimLeanValue = Animator.StringToHash("LeanValue");
+        private static readonly int AnimIsAttacking = Animator.StringToHash("IsAttacking");
 
         // Input state tracking
         private bool _moveInputActive;
@@ -92,8 +93,49 @@ namespace DarkNautica.Gameplay
             _input?.Dispose();
         }
 
+        private void OnAnimatorMove()
+        {
+            if (_animator.GetBool(AnimIsAttacking))
+            {
+                // Take XZ from root motion, discard Y to prevent ground lift
+                Vector3 rootDelta = _animator.deltaPosition;
+                rootDelta.y = 0f;
+
+                // Apply gravity manually
+                if (_controller.isGrounded && _verticalVelocity < 0f)
+                    _verticalVelocity = -2f;
+                else
+                    _verticalVelocity += gravity * Time.deltaTime;
+
+                rootDelta.y = _verticalVelocity * Time.deltaTime;
+                _controller.Move(rootDelta);
+            }
+        }
+
         private void Update()
         {
+            bool isAttacking = _animator.GetBool(AnimIsAttacking);
+
+            // --- Toggle root motion for attacks ---
+            if (isAttacking && !_animator.applyRootMotion)
+                _animator.applyRootMotion = true;
+            else if (!isAttacking && _animator.applyRootMotion)
+                _animator.applyRootMotion = false;
+
+            // --- During attacks: skip movement logic, OnAnimatorMove handles it ---
+            if (isAttacking)
+            {
+                // Don't zero _moveInput — preserve live input state so movement resumes instantly
+                _animator.SetFloat(AnimMoveSpeed, 0f, 0.1f, Time.deltaTime);
+                _animator.SetInteger(AnimCurrentGait, 0);
+                _animator.SetBool(AnimIsStopped, true);
+                _animator.SetBool(AnimIsGrounded, _controller.isGrounded);
+                _animator.SetBool(AnimMovementInputHeld, false);
+                _animator.SetBool(AnimMovementInputPressed, false);
+                _animator.SetBool(AnimMovementInputTapped, false);
+                return;
+            }
+
             bool isGrounded = _controller.isGrounded;
             bool hasInput = _moveInput.sqrMagnitude > 0.01f;
 
@@ -169,8 +211,8 @@ namespace DarkNautica.Gameplay
             velocity.y = _verticalVelocity;
             _controller.Move(velocity * Time.deltaTime);
 
-            // --- Rotate character to face movement direction ---
-            if (moveDirection.sqrMagnitude > 0.01f)
+            // --- Rotate character to face movement direction (skip during attacks) ---
+            if (moveDirection.sqrMagnitude > 0.01f && !isAttacking)
             {
                 Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
